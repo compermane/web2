@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #00676F;
+    color: #fff;
+}
+
+.navbar {
+    width: 100%;
+    background: #0ef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #081b29;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #081b29;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #fff;
+}
+
+.container {
+    padding: 100px 20px;
+    /* max-width: 800px; */
+    margin: 0 auto;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 91.73%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #0ef;
+    border-radius: 5px 0 0 5px;
+    margin-left:10em;
+    outline: none;
+    font-size: 16px;
+    width: 80%;
+}
+
+.search-bar button {
+    background: #0ef;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+    background: #fff;
+    color: #081b29;
+}
+
+.job-cards {
+    margin-left: 10em;
+    display: grid;
+    flex: 1;
+    gap: 20px;
+    max-width: 800px;
+}
+
+.job-card {
+    background: #0ef;
+    color: #081b29;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.job-card h3 {
+    margin-bottom: 10px;
+}
+
+.job-card p {
+    margin: 5px 0;
+}
+
+.job-card i {
+    margin-right: 5px;
+    color: #081b29;
+}
+
+.map-column {
+    position: fixed;
+    z-index: 999;
+    flex: 1;
+    margin-left: 70em;
+    /* max-width: 1px; */
+    justify-content: center;
+    align-items: center;
+}
+
+.column-wrapper {
+    display: flex;
+    align-items: space-between;
+}
