@@ -82,7 +82,7 @@ function Home() {
                 </div>
                 <div className="map-column">
                     <h2>Encontre empresas perto de você</h2>
-                    <MapView style = {{position: "fixed"}}/>
+                    <MapView className="map"/>
                 </div>
             </div>
         </div>

@@ -42,14 +42,14 @@ function MapView() {
     }, []);
   
     return (
-      <div style={{position: "fixed", width: "100%", height: "100%"}}>
+      <div>
         {loading ? ( // Exibe "Carregando..." enquanto espera a posição
           <p>Carregando localização...</p>
         ) : (
             <MapContainer
                 center={position}
                 zoom={13}
-                style={{ height: "400px", width: "600px" }}
+                style={{ width: "100%", height: "50vh", maxWidth: "600px", maxHeight: "400px"}}
             >
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <Marker position={position}>
