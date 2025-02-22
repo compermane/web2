@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./home.css";  // Supondo que você tenha um arquivo CSS separado
+import "./dashboard.css";  // Supondo que você tenha um arquivo CSS separado
 import MapView from "../../components/MapView";
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Dashboard() {
     const [selectedJob, setSelectedJob] = useState(null); // Controla o estado do cartão selecionado
     const navigate = useNavigate(); // Obtém a função de navegação
 
@@ -25,7 +25,7 @@ function Home() {
     // Função para lidar com o clique no botão de inscrição
     const handleInscrever = (e) => {
         e.stopPropagation(); // Impede que o clique seja propagado para o job-card
-        navigate("/login"); // Redireciona para a página de inscrição
+        navigate("/inscricao"); // Redireciona para a página de inscrição
     };
 
     return (
@@ -33,8 +33,9 @@ function Home() {
             <div className="navbar">
                 <div className="logo">JobFinder</div>
                 <div className="nav-links">
-                    <a href="/">Home</a>
-                    <a href="/login">Login</a>
+                    <a href="/dashboard">Home</a>
+                    <a href="/inscritas">Vagas Inscritas</a>
+                    <a href="/">Sair</a>
 
                 </div>
             </div>
@@ -76,4 +77,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Dashboard;
