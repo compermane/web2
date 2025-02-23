@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";  
 import "./signup.css";
 import axios from "axios";
@@ -12,6 +12,9 @@ function Signup() {
 
     const navigate = useNavigate();  // Inicializa o hook useNavigate
 
+    useEffect(() => {
+        document.title = "Signup - JobFinder"
+    }, [])
     const handleSubmit = (e) => {
         e.preventDefault();
 

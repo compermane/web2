@@ -39,6 +39,7 @@ body {
 
 .search-bar button {
     background: #120a8f;
+    color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -47,8 +48,9 @@ body {
 }
 
 .search-bar button:hover {
+    transition-duration: 700ms;
     background: #fff;
-    color: #ffffff;
+    color: black;
 }
 
 .job-cards {
@@ -97,10 +99,19 @@ body {
 
 /* Para telas pequenas (celulares) */
 @media (max-width: 418px) {
+    .nav-links {
+        display: flex;
+        margin-left: 15px;
+        width: 300px;
+        justify-content: space-around
+        /* border: 3px solid pink; */
+    }
+
     .column-wrapper {
         flex-direction: column;
     }
     .search-bar {
+        margin-left: -3em;
         flex-direction: column; /* Empilha o input e o botão */
         width: 100%;
     }
@@ -117,16 +128,12 @@ body {
         width: 380px;
     }
 
-    .jobs-column {
-        max-width: 100%;
-    }
-
-    .job-card {
-        margin-left: -10em;
+    .job-cards {
+        margin-left: -3em;
     }
 
     .map-column {
-        margin-left: -0.08em;
+        margin-left: -2.5em;
         position: relative;
         width: 100%;
         height: 300px;

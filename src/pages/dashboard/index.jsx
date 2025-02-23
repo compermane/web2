@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./dashboard.css";  // Supondo que você tenha um arquivo CSS separado
+import React, { useEffect, useState } from "react";
+import "./dashboard.css"; 
 import MapView from "../../components/MapView";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,9 @@ function Dashboard() {
     const [selectedJob, setSelectedJob] = useState(null); // Controla o estado do cartão selecionado
     const navigate = useNavigate(); // Obtém a função de navegação
 
+    useEffect(() => {
+        document.title = "Dashboard - JobFinder"
+    }, [])
     const jobData = [
         { title: "Desenvolvedor Front-End", location: "São Paulo, SP", salary: "R$6.000/mês" },
         { title: "Analista de Dados", location: "Belo Horizonte, MG", salary: "R$5.500/mês" },
@@ -23,9 +26,9 @@ function Dashboard() {
     };
 
     // Função para lidar com o clique no botão de inscrição
-    const handleInscrever = (e) => {
+    const handleInscrever = (e, job) => {
         e.stopPropagation(); // Impede que o clique seja propagado para o job-card
-        navigate("/inscricao"); // Redireciona para a página de inscrição
+        navigate("/inscricao", {state: { job }}); // Redireciona para a página de inscrição
     };
 
     return (
@@ -58,7 +61,7 @@ function Dashboard() {
                                 {selectedJob === index && (
                                     <button
                                         className="btn-inscrever"
-                                        onClick={handleInscrever}  // Passando o evento para o handler
+                                        onClick={(e) => handleInscrever(e, job)}  // Passando o evento para o handler
                                     >
                                         INSCREVA-SE
                                     </button>

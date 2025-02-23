@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./vagasInscritas.css"; // Supondo que você tenha um arquivo CSS separado
+import "./vagasInscritas.css";
 import axios from "axios";  // Importa o Axios para fazer requisições
-import { useNavigate } from "react-router-dom";  // Para navegação, caso precise
+import { useNavigate } from "react-router-dom";
 
 function VagasInscritas() {
     const navigate = useNavigate(); // Obtém a função de navegação
@@ -12,6 +12,7 @@ function VagasInscritas() {
 
     // Função para pegar as inscrições do servidor
     useEffect(() => {
+        document.title = "Vagas Inscritas - JobFinder"
         axios
             .get("http://localhost:5000/inscricoes")  // Faz uma requisição GET para o JSON Server
             .then((response) => {
@@ -19,6 +20,7 @@ function VagasInscritas() {
                 setLoading(false);  // Finaliza o estado de carregamento
             })
             .catch((error) => {
+                console.log("BRUH");
                 console.error("Erro ao buscar as inscrições:", error);
                 setLoading(false);  // Mesmo em erro, finaliza o estado de carregamento
             });

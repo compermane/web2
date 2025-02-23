@@ -65,3 +65,9 @@ h2 {
 .btn-remover:hover {
     background-color: #c0392b;
 }
+
+@media (max-width: 418px) {
+    .container {
+        margin-left: 3em;
+    }
+}

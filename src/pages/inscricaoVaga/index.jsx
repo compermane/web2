@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";  // Importe o useNavigate
+import { useNavigate, useLocation } from "react-router-dom"; 
 import "./inscricaoVaga.css";
 
 function InscricaoVaga() {
@@ -11,6 +11,14 @@ function InscricaoVaga() {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
+    const location = useLocation();
+    const job = location.state?.job || {}
+
+    console.log("Vaga selecionada: ", job)
+
+    useEffect(() => {
+        document.title = "Inscrever-se - JobFinder"
+    }, [])
     const handleSubmit = (e) => {
         e.preventDefault();
     
@@ -18,7 +26,10 @@ function InscricaoVaga() {
         const newApplication = {
             name,
             email,
-            resume: resume ? resume.name : "" // Armazena o nome do arquivo de currículo
+            resume: resume ? resume.name : "", // Armazena o nome do arquivo de currículo
+            title: job.title,
+            location: job.location,
+            salary: job.salary
         };
     
         // Envia a inscrição para o backend

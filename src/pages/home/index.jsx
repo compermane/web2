@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import "./home.css";  // Supondo que você tenha um arquivo CSS separado
+import React, { useEffect, useState } from "react";
+import "./home.css"; 
 import MapView from "../../components/MapView";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
+    useEffect(() => {
+        document.title = "Home - JobFinder"
+    }, [])
     const [selectedJob, setSelectedJob] = useState(null); // Controla o estado do cartão selecionado
     const navigate = useNavigate(); // Obtém a função de navegação
 

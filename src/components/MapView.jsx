@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css"
 
-// Ícone personalizado (pois o Leaflet não carrega os padrões no React)
 const customIcon = new L.Icon({
   iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
   iconSize: [25, 41],
@@ -30,13 +29,13 @@ function MapView() {
           },
           (error) => {
             console.error("Erro ao obter localização:", error);
-            setPosition([-23.55052, -46.633308]); // Localização padrão (São Paulo)
+            setPosition([-22.01344210162815, -47.88730337340149]); // Localização padrão (São Carlos)
             setLoading(false);
           }
         );
       } else {
         console.error("Geolocalização não suportada");
-        setPosition([-23.55052, -46.633308]);
+        setPosition([-22.01344210162815, -47.88730337340149]);
         setLoading(false);
       }
     }, []);
