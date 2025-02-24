@@ -7,6 +7,10 @@ function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [cep, setCep] = useState("");
+    const [address, setAddress] = useState({ logradouro: "", bairro: "", cidade: "", uf: "" });
+
     const [error, setError] = useState("");       // Declaração do estado para erro
     const [success, setSuccess] = useState("");   // Declaração do estado para sucesso
 
@@ -15,11 +19,46 @@ function Signup() {
     useEffect(() => {
         document.title = "Signup - JobFinder"
     }, [])
+
+    const fetchAddress = async (cep) => {
+        console.log("BRUH 1")
+        if (cep.length === 8) {
+            console.log("BRUH 2")
+            try {
+                const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+                if (response.data.erro) {
+                    setError("CEP inválido");
+                    setAddress( { logradouro: "", bairro: "", cidade: "", uf: "" } );
+                } else {
+                    setError("");
+                    setAddress( {
+                        logradouro: response.data.logradouro,
+                        bairro: response.data.bairro,
+                        cidade: response.data.localidade,
+                        uf: response.data.uf
+                    } )
+                }
+            } catch(error) {
+                setError("CEP deve ter 8 dígitos");
+                setAddress( { logradouro: "", bairro: "", cidade: "", uf: "" } );
+            }
+        }
+    };
+
+    const handleCepChange = (e) => {
+        const newCep = e.target.value.replace(/\D/g, "");
+        setCep(newCep);
+
+        if (newCep.length === 8) {
+            fetchAddress(newCep);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Cria um objeto com os dados do novo usuário
-        const newUser = { name, email, password };
+        const newUser = { name, email, password, cep, ...address };
 
         // Envia os dados para o JSON Server
         axios.post("http://localhost:5000/users", newUser)
@@ -86,7 +125,61 @@ function Signup() {
                                 required 
                             />
                         </div>
+                        <div className="input-group">
+                            <label htmlFor="cep">CEP</label>
+                            <input 
+                                type="text" 
+                                id="cep" 
+                                placeholder="Digite seu CEP"
+                                value={cep}
+                                onChange={handleCepChange} 
+                                required 
+                            />
+                        </div>
 
+                        <div className="input-group">
+                            <label htmlFor="logradouro">Endereço</label>
+                            <input 
+                                type="text" 
+                                id="logradouro" 
+                                placeholder="Endereço"
+                                value={address.logradouro}
+                                disabled 
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="bairro">Bairro</label>
+                            <input 
+                                type="text" 
+                                id="bairro" 
+                                placeholder="Bairro"
+                                value={address.bairro}
+                                disabled 
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="cidade">Cidade</label>
+                            <input 
+                                type="text" 
+                                id="cidade" 
+                                placeholder="Cidade"
+                                value={address.cidade}
+                                disabled 
+                            />
+                        </div>
+
+                        <div className="input-group">
+                            <label htmlFor="uf">Estado</label>
+                            <input 
+                                type="text" 
+                                id="uf" 
+                                placeholder="Estado"
+                                value={address.uf}
+                                disabled 
+                            />
+                        </div>
                         {error && <div className="error-message">{error}</div>}
                         {success && <div className="success-message">{success}</div>}
 

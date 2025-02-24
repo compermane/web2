@@ -10,8 +10,32 @@
       "name": "Anna",
       "email": "anna@hotmail.com",
       "password": "anna123"
+    },
+    {
+      "id": "9090",
+      "name": "Eugênio",
+      "email": "eugenio@email.com",
+      "password": "eugenio"
     }
   ],
   "inscricoes": [
+    {
+      "id": "a7d8",
+      "name": "Eugênio Akinori Kisi Nishimiya",
+      "email": "eugenio@email.com",
+      "resume": "Exemplo PDF.pdf",
+      "title": "Desenvolvedor Front-End",
+      "location": "São Paulo, SP",
+      "salary": "R$6.000/mês"
+    },
+    {
+      "id": "a7d8",
+      "name": "Eugênio Akinori Kisi Nishimiya",
+      "email": "eugenio@email.com",
+      "resume": "Exemplo PDF.pdf",
+      "title": "Desenvolvedor Front-End",
+      "location": "São Paulo, SP",
+      "salary": "R$6.000/mês"
+    }
   ]
 }
