@@ -1,4 +1,4 @@
-📌 Entrega 2 - WEB2
+## 📌 Entrega 2 - WEB2
 
 Anna Carolina Farias RA: 811448
 
